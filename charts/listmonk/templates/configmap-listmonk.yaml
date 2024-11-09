@@ -10,9 +10,9 @@ data:
     address = "0.0.0.0:80"
 
     [db]
-    host = "{{ include "listmonk.fullname" .}}-postgres"
+    host = {{ include "listmonk.postgresHostname" . | quote }}
     port = 5432
-    database = "{{ .Values.postgres.database }}"
+    database = {{ .Values.postgres.database | quote }}
     ssl_mode = "disable"
     max_open = 25
     max_idle = 25
